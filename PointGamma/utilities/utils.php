@@ -33,8 +33,32 @@ END;
 }
 
 function generateNavbar() {
+    global $page_list;
     echo <<<END
+    <div class="menu">
+    <div id="logo" class="menuItem" style="height:80px">
+        <a href="index.php"><img alt="logo" src="images/logo.png" style="height:100%"/></a>
+    </div>
+END;
+
+    foreach ($page_list as $page) {
+        echo "<div id=" . $page['name'] . " class='menuItem'>" . $page['menutitle'] . "</div><br>";
+    }
+    
+    echo <<<END
+    <button id="toggler" style="
+        position:absolute;
+        right:0;
+        top:0;
+        height:60px;
+        margin:10px;
+        font-size: 200%;
+        display:none;">
+        Menu
+    </button>
+</div>
+
+
 END;
 }
-
 ?>
