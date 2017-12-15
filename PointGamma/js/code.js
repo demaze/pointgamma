@@ -1,12 +1,9 @@
 $(document).ready(function () {
 
     /* On réduit le menu si l'écran est trop petit */
-
-
+    
     var largeur;
     var large = true;
-
-
     setInterval(
             function () {
                 largeur = (document.body.clientWidth);
@@ -28,11 +25,10 @@ $(document).ready(function () {
                 }
             }
     , 150);
-
     $("#toggler").click(function () {
         $("div.menuItem").toggle();
         $("#logo").show();
 
     });
-
+    
 });

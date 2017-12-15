@@ -10,10 +10,8 @@ function generateHTMLHeader($title) {
     
         <link rel="icon" href="images/logo.png">
         <title>$title</title>
-
         <!-- CSS Bootstrap -->
         <link href="css/bootstrap.css" rel="stylesheet">
-
         <!-- CSS Perso -->
         <link href="css/perso.css" rel="stylesheet">
     
@@ -40,11 +38,12 @@ function generateNavbar() {
         <a href="index.php"><img alt="logo" src="images/logo.png" style="height:100%"/></a>
     </div>
 END;
-
     foreach ($page_list as $page) {
-        echo "<div id=" . $page['name'] . " class='menuItem'>" . $page['menutitle'] . "</div><br>";
+        if ($page['name'] != 'home') {
+            echo "<div id=" . $page['name'] . " class='menuItem'>" . $page['menutitle'] . "</div>";
+        }
     }
-    
+
     echo <<<END
     <button id="toggler" style="
         position:absolute;
@@ -57,8 +56,6 @@ END;
         Menu
     </button>
 </div>
-
-
 END;
 }
 
@@ -92,6 +89,7 @@ $page_list = array(
         "name" => "billeterie",
         "title" => "Billeterie",
         "menutitle" => "Billeterie"));
+
 function checkPage($askedPage) {
     global $page_list;
     foreach ($page_list as $page) {
@@ -101,6 +99,7 @@ function checkPage($askedPage) {
     }
     return false;
 }
+
 function getPageTitle($askedPage) {
     global $page_list;
     foreach ($page_list as $page) {
@@ -110,5 +109,4 @@ function getPageTitle($askedPage) {
     }
     return "erreur";
 }
-
 ?>
