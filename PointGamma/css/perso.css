@@ -22,38 +22,11 @@ div.menuItem {
     padding:10px;
     padding-left: 5px;
     padding-right: 5px;
-}
-
-div.intituleItem{
     text-align: center;
     font-size: 200%;
 }
 
-div.sousMenuItem{
-    padding: 10px 10px 10px 10px;
-    color:gray;
-    text-align: center;
-    height:30px;
-    line-height: 30px;
-}
-
-div.sousMenu{
-    margin-top:10px;
-    padding-bottom: 20px;
-    border: solid 1px;
-    border-color: #c8c8c8;
-    border-radius: 0px 0px 5px 5px;
-    box-shadow: 0px 0px 5px 0px grey;
-    display:none;
-}
-
-
-div.sousMenuItem:hover{
-    color: black;
-}
-
-
-div.intituleItem:hover{
+div.menuItem:hover{
     color: black;
 }
 
