@@ -18,16 +18,17 @@ function generateHTMLHeader($title) {
         <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript" src="js/code.js"></script> 
     </head>
-    <body>
+    <body style="background: url('images/fond_bleu_25.png');">
 END;
 }
+
 
 function generateHTMLFooter() { //ATTENTION : MODEIFIé POUR LE JUMBOTRON
     echo "<br><br><br><br><br><br>";
     if (!isset($_SESSION['loggedIn']) || !$_SESSION['loggedIn']) {
         echo <<<END
     <div class="jumbotron footer">
-    <a href='connexion.php' style="font-size:100%; text-align: left">Connexion pour élèves polytechniciens</a>
+    <a href='signin.php' style="font-size:100%; text-align: left">Connexion pour élèves polytechniciens</a>
     </div>
 END;
     } else {
@@ -44,7 +45,8 @@ END;
 END;
 }
 
-function generateNavbar($askedPage) {
+
+function generateNavbar() {
     global $page_list;
     echo <<<END
     <div class="menu">
@@ -54,11 +56,7 @@ function generateNavbar($askedPage) {
 END;
     foreach ($page_list as $page) {
         if ($page['name'] != 'home') {
-            echo "<div id='" . $page['name'] . "' class='menuItem'><a href='index.php?page=" . $page['name'] . "'";
-            if ($askedPage == $page['name']) {
-                echo " style='color:black'";
-            }
-            echo ">" . $page['menutitle'] . "</a></div>\n";
+            echo "<div id=" . $page['name'] . " class='menuItem'>" . $page['menutitle'] . "</div>";
         }
     }
 
@@ -76,5 +74,4 @@ END;
 </div>
 END;
 }
-
 ?>
