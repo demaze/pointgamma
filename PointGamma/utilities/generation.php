@@ -22,7 +22,6 @@ function generateHTMLHeader($title) {
 END;
 }
 
-
 function generateHTMLFooter() { //ATTENTION : MODEIFIé POUR LE JUMBOTRON
     echo "<br><br><br><br><br><br>";
     if (!isset($_SESSION['loggedIn']) || !$_SESSION['loggedIn']) {
@@ -45,8 +44,7 @@ END;
 END;
 }
 
-
-function generateNavbar() {
+function generateNavbar($askedPage) {
     global $page_list;
     echo <<<END
     <div class="menu">
@@ -56,7 +54,11 @@ function generateNavbar() {
 END;
     foreach ($page_list as $page) {
         if ($page['name'] != 'home') {
-            echo "<div id=" . $page['name'] . " class='menuItem'>" . $page['menutitle'] . "</div>";
+            echo "<div id='" . $page['name'] . "' class='menuItem'><a href='index.php?page=" . $page['name'] . "'";
+            if ($askedPage == $page['name']) {
+                echo " style='color:black'";
+            }
+            echo ">" . $page['menutitle'] . "</a></div>\n";
         }
     }
 
@@ -74,4 +76,5 @@ END;
 </div>
 END;
 }
+
 ?>

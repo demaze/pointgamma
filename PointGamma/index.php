@@ -1,19 +1,20 @@
 <?php
+
 session_start();
 require 'utilities/utils.php';
 require 'utilities/generation.php';
 require 'utilities/dataGestion.php';
-require_once 'classes/User.php';
+require 'classes/User.php';
 $dbh = Database::connect();
 
 //gestion de la connexion
-if (isset($_GET['todo']) && $_GET['todo']=='login' && User::isValidUser($dbh, $_POST['login'], $_POST['mdp'])) {
+if (isset($_GET['todo']) && $_GET['todo'] == 'login' && User::isValidUser($dbh, $_POST['login'], $_POST['mdp'])) {
     $_SESSION['login'] = $_POST['login'];
     $_SESSION['loggedIn'] = true;
 }
 
 //gestion de la deconnexion
-if(isset($_GET['todo']) && $_GET['todo']=='logout') {
+if (isset($_GET['todo']) && $_GET['todo'] == 'logout') {
     logOut();
 }
 
@@ -32,15 +33,19 @@ if ($authorized) {
 generateHTMLHeader($pageTitle);
 
 //navBar
-generateNavbar();
+generateNavbar($askedPage);
 
 //affichage du contenu
+echo "<div class='container'>";
+
 if ($authorized) {
     require("content/content_" . $askedPage . ".php");
     display();
 } else {
     echo "<p>Désolé, la page demandée n'existe pas</p>";
 }
+
+echo "</div>";
 
 
 generateHTMLFooter();

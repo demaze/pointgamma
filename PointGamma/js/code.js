@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
     /* On réduit le menu si l'écran est trop petit */
-    
+
     var largeur;
     var large = true;
     setInterval(
@@ -30,5 +30,13 @@ $(document).ready(function () {
         $("#logo").show();
 
     });
-    
+
+
+
+    $(".menuItem").click(function () {
+        console.log(1);
+        $("#main").load("content_bars.php");
+    });
+
+
 });

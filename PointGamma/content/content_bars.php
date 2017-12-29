@@ -1,4 +1,5 @@
 <?php
+
 function display() {
     global $dbh;
     //gestion de la connexion
@@ -19,25 +20,27 @@ function display() {
             $isPresident = true;
         }
     }
+    
+    
     $query = "SELECT * FROM Bars;";
     $sth = $dbh->prepare($query);
     $sth->execute();
     while ($courant = $sth->fetch(PDO::FETCH_ASSOC)) {
-        echo "<div class='row' style='position:relative'>";
-        echo "<div class='col-md-5' style='height:100%'>";
-        echo "<h1>" . $courant['nom'] . "</h1>";
-        echo "<img src='" . $courant['image'] . "' width='400' height='200'/>";
-        echo "</div>";
-        echo "<div class='col-md-7' style='position:absolute;bottom:0;right:0'>";
-        echo "<div style='position:relative; bottom: 0px; height:100%'>";
-        echo "<p>" . $courant['description'] . "</p>";
+        echo "<br>\n";
+        echo "<div class='row rowBar'>\n";
+        echo "  <div class='col-md-4 titreBar'>\n";
+        echo "      <h1>" . $courant['nom'] . "</h1>\n";
+        echo "      <img src='" . $courant['image'] . "' style='max-width:100%;max-height: 100%'/>\n";
+        echo "  </div>\n";
+        echo "  <div class='col-md-8 descriptionBar'>\n";
+        echo "      <p>" . $courant['description'] . "</p>\n";
         if (isConnected() && !$isPresident) {
-            echo "<a class='btn btn-info' href='index.php?page=bars&inscription_id=" . $courant['id'] . "' role='button' style='text-align: center'>S'inscrire</a>";
+            echo "<a class='btn btn-info' href='index.php?page=bars&inscription_id=" . $courant['id'] . "' role='button' style='text-align: center'>S'inscrire</a>\n";
         }
-        echo "</div></div></div>";
-        echo "<br>";
-        echo "<br>";
-        echo "<br>";
+        echo "  </div>\n";
+        echo "</div>\n";
+        echo "<br>\n";
+        echo "<br>\n";
     }
 //gestion de l'inscription dans un bar
     if (isset($_GET['inscription_id']) && isConnected()) {
@@ -48,7 +51,7 @@ function display() {
         $sth->execute(array($login, $id));
     }
 //page du president
-$noCandidate = true;
+    $noCandidate = true;
     if (isConnected()) {
         $login = $_SESSION['login'];
         $user = User::getUser($dbh, $login);
@@ -79,6 +82,8 @@ $noCandidate = true;
         echo "Aucune candidature pour l'instant.";
     }
 }
+
+
 ?>
 
 
