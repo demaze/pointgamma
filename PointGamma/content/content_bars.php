@@ -2,15 +2,18 @@
 
 function display() {
     global $dbh;
+
     //gestion de la connexion
     if (isset($_GET['todo']) && $_GET['todo'] == 'login' && User::isValidUser($dbh, $_POST['login'], $_POST['mdp'])) {
         $_SESSION['login'] = $_POST['login'];
         $_SESSION['loggedIn'] = true;
     }
+
     //gestion de la deconnexion
     if (isset($_GET['todo']) && $_GET['todo'] == 'logout') {
         logOut();
     }
+
     //on stocke si l'utilisateur est president ou non
     $isPresident = false;
     if (isConnected()) {
@@ -20,28 +23,30 @@ function display() {
             $isPresident = true;
         }
     }
-    
-    
+
     $query = "SELECT * FROM Bars;";
     $sth = $dbh->prepare($query);
     $sth->execute();
     while ($courant = $sth->fetch(PDO::FETCH_ASSOC)) {
-        echo "<br>\n";
-        echo "<div class='row rowBar'>\n";
-        echo "  <div class='col-md-4 titreBar'>\n";
-        echo "      <h1>" . $courant['nom'] . "</h1>\n";
-        echo "      <img src='" . $courant['image'] . "' style='max-width:100%;max-height: 100%'/>\n";
-        echo "  </div>\n";
-        echo "  <div class='col-md-8 descriptionBar'>\n";
-        echo "      <p>" . $courant['description'] . "</p>\n";
+        echo "<div class='row' style='position:relative'>";
+        echo "<div class='col-md-5' style='height:100%'>";
+        echo "<h1>" . $courant['nom'] . "</h1>";
+        echo "<img src='" . $courant['image'] . "' width='400' height='200'/>";
+        echo "</div>";
+        echo "<div class='col-md-7' style='position:absolute;bottom:0;right:0'>";
+        echo "<div style='position:relative; bottom: 0px; height:100%'>";
+        echo "<p>" . $courant['description'] . "</p>";
         if (isConnected() && !$isPresident) {
-            echo "<a class='btn btn-info' href='index.php?page=bars&inscription_id=" . $courant['id'] . "' role='button' style='text-align: center'>S'inscrire</a>\n";
+            echo "<a class='btn btn-info' href='index.php?page=bars&inscription_id=" . $courant['id'] . "' role='button' style='text-align: center'>S'inscrire</a>";
         }
-        echo "  </div>\n";
-        echo "</div>\n";
-        echo "<br>\n";
-        echo "<br>\n";
+        echo "</div></div></div>";
+        echo "<br>";
+        echo "<br>";
+        echo "<br>";
     }
+
+
+
 //gestion de l'inscription dans un bar
     if (isset($_GET['inscription_id']) && isConnected()) {
         $id = $_GET['inscription_id'];
@@ -50,8 +55,10 @@ function display() {
         $sth = $dbh->prepare($query);
         $sth->execute(array($login, $id));
     }
+
+
 //page du president
-    $noCandidate = true;
+$noCandidate = true;
     if (isConnected()) {
         $login = $_SESSION['login'];
         $user = User::getUser($dbh, $login);
@@ -69,6 +76,7 @@ function display() {
             }
         }
     }
+
 //approbation par le president d'un membre
     if ($isPresident && isset($_GET['approved_login'])) {
         $approved_login = $_GET['approved_login'];
@@ -82,9 +90,9 @@ function display() {
         echo "Aucune candidature pour l'instant.";
     }
 }
-
-
 ?>
+
+
 
 
 

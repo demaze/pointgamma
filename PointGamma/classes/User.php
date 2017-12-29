@@ -1,8 +1,11 @@
 <?php
+
 class User {
+
     public $login;
     public $mdp;
     public $bar;
+
     public function setAttr($login, $mdp, $bar){
         $this->login = $login;
         $this->mdp = $mdp;
@@ -12,6 +15,7 @@ class User {
     public function __toString() {
         return $this->login;
     }
+
     public static function getUser($dbh, $login) {
         $query = "SELECT login, mdp, bar FROM Users WHERE login='$login';";
         $sth = $dbh->prepare($query);
@@ -24,6 +28,7 @@ class User {
         }
         return null;
     }
+
     public static function insertUser($dbh,$user) {
         if (User::getUser($dbh, $user->login) == null) {
             $sth = $dbh->prepare("INSERT INTO Users (`login`, `mdp`, `bar`) VALUES(?,SHA1(?),?);");
@@ -39,6 +44,7 @@ class User {
         }
         return false;
     }
+
     public function isPresident($dbh){
         $query = "SELECT * FROM Bars WHERE president=?";
         $sth = $dbh->prepare($query);
@@ -49,4 +55,4 @@ class User {
         return false;
     }
 }
-?>
+

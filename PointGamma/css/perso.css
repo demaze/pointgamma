@@ -5,13 +5,11 @@
 div.menu {
     position:fixed;
     top:0;
-    left:0;
     width:100%;
     background-color: #f5f5f5;
     border: solid 1px;
     border-color: #c8c8c8;
     min-height:80px;
-    z-index: 10;
 }
 
 div.menuItem {
@@ -32,48 +30,3 @@ div.menuItem:hover{
     color: black;
 }
 
-html {
-    height: 100%;
-}
-
-body {
-    min-height: 100%;
-    position:relative;
-    padding-top: 100px;
-}
-
-div.footer{
-    background-color:black;
-    color:white;
-    position:absolute;
-    bottom:0;
-    left:0;
-    right:0;
-    margin:0
-}
-
-div.rowbar{
-    height: 300px;
-    position: relative;
-}
-
-div.titrebar{
-    text-align: center;
-    height:100%;
-}
-
-div.descriptionbar{
-    position:absolute;
-    right:0;
-    top:50%;
-    transform: translateY(-50%);
-}
-
-a {
-    color:gray;
-    text-decoration:none;
-}
-a:hover {
-    color:black;
-    text-decoration:none;
-}
