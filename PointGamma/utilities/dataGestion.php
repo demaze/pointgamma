@@ -3,11 +3,9 @@
 class Database {
 
     public static function connect() {
-        //!!KETRU A CHANGER!!
         $dsn = 'mysql:dbname=PointGamma;host=127.0.0.1';
         $user = 'root';
         $password = '';
-        //!!KETRU A CHANGER!!
         $dbh = null;
         try {
             $dbh = new PDO($dsn, $user, $password, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
@@ -21,4 +19,4 @@ class Database {
 
 }
 
-?>
+
