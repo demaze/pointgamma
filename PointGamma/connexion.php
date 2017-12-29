@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'utilities/generation.php';
+require_once 'utilities/utils.php';
 generateHTMLHeader("Connexion");
 ?>
 <h1>Connexion pour les eleves de Polytechnique</h1>
@@ -9,3 +9,4 @@ generateHTMLHeader("Connexion");
     <p>Mot de passe : <input type='password' name ='mdp' required /></p>
     <p><input type='submit' value='Connexion' /></p>
 </form>
+
