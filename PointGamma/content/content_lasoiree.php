@@ -19,3 +19,5 @@ function display() {
 END;
 }
 ?>
+
+<!-- Verifier la source de la video, mettre ou non le ..    -->

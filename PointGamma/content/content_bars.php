@@ -3,7 +3,7 @@
 function display() {
     global $dbh;
     //gestion de la connexion
-    if (isset($_GET['todo']) && $_GET['todo'] == 'login' && User::isValidUser($dbh, $_POST['login'], $_POST['mdp'])) {
+    if (isset($_GET['todo']) && $_GET['todo'] == 'login' && isset($_POST['login']) && isset($_POST['mdp']) && User::isValidUser($dbh, $_POST['login'], $_POST['mdp'])) {
         $_SESSION['login'] = $_POST['login'];
         $_SESSION['loggedIn'] = true;
     }

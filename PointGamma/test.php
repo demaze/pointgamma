@@ -4,12 +4,15 @@ require('utilities/generation.php');
 generateHTMLHeader("bars");
 ?>
 
-<div class="menu">
+<div class="menu" style="text-align: center">
     <div id="logo" class="menuItem" style="height:80px">
         <a href="index.php"><img alt="logo" src="images/logo.png" style="height:100%"/></a>
     </div>
 
     <div id="lasoiree" class='menuItem'><a href="index.php?page=lasoiree">La Soiree</a></div>
+    <div id="lasoiree2" class='menuItem'><a href="index.php?page=lasoiree">La Soiree</a></div>
+    <div id="lasoiree3" class='menuItem'><a href="index.php?page=lasoiree">La Soiree</a></div>
+    <div id="lasoiree4" class='menuItem'><a href="index.php?page=lasoiree">La Soiree</a></div>
 
     <button id="toggler" style="
             position:absolute;
@@ -22,6 +25,7 @@ generateHTMLHeader("bars");
         Menu
     </button>
 </div> 
+
 
 <?php
 generateHTMLFooter();

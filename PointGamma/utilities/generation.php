@@ -27,7 +27,7 @@ function generateHTMLFooter() { //ATTENTION : MODEIFIé POUR LE JUMBOTRON
     if (!isset($_SESSION['loggedIn']) || !$_SESSION['loggedIn']) {
         echo <<<END
     <div class="jumbotron footer">
-    <a href='connexion.php' style="font-size:100%; text-align: left">Connexion pour élèves polytechniciens</a>
+    <a href='signin.php' style="font-size:100%; text-align: left">Connexion pour élèves polytechniciens</a>
     </div>
 END;
     } else {

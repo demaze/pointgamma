@@ -8,7 +8,7 @@ require 'classes/User.php';
 $dbh = Database::connect();
 
 //gestion de la connexion
-if (isset($_GET['todo']) && $_GET['todo'] == 'login' && User::isValidUser($dbh, $_POST['login'], $_POST['mdp'])) {
+if (isset($_GET['todo']) && $_GET['todo'] == 'login' && isset($_POST['login']) && isset($_POST['mdp']) && User::isValidUser($dbh, $_POST['login'], $_POST['mdp'])) {
     $_SESSION['login'] = $_POST['login'];
     $_SESSION['loggedIn'] = true;
 }
@@ -47,6 +47,7 @@ if ($authorized) {
 
 echo "</div>";
 
+echo "<img id='fond' src='images/fond_bleu_25.png' style='position: absolute; left: 0px; top: 0px; height: 100%; width: 100%; opacity: 0.8; display: block;z-index:-10'>";
 
 generateHTMLFooter();
 ?>

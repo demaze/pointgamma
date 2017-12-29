@@ -7,7 +7,8 @@ $(document).ready(function () {
     setInterval(
             function () {
                 largeur = (document.body.clientWidth);
-                if (largeur < 621 && large) {
+                console.log(largeur);
+                if (largeur < 857 && large) {
                     large = false;
                     $("div.menuItem").css("display", "block");
                     $("div.menuItem").hide();
@@ -16,7 +17,7 @@ $(document).ready(function () {
                     $("#toggler").show();
 
                 }
-                if (largeur >= 621 && !large) {
+                if (largeur >= 857 && !large) {
                     large = true;
                     $("div.menuItem").css("display", "inline-block");
                     $("div.menuItem").show();
@@ -25,18 +26,10 @@ $(document).ready(function () {
                 }
             }
     , 150);
+
     $("#toggler").click(function () {
         $("div.menuItem").toggle();
         $("#logo").show();
 
     });
-
-
-
-    $(".menuItem").click(function () {
-        console.log(1);
-        $("#main").load("content_bars.php");
-    });
-
-
 });
