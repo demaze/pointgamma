@@ -7,7 +7,6 @@ $(document).ready(function () {
     setInterval(
             function () {
                 largeur = (document.body.clientWidth);
-                console.log(largeur);
                 if (largeur < 857 && large) {
                     large = false;
                     $("div.menuItem").css("display", "block");
@@ -32,4 +31,16 @@ $(document).ready(function () {
         $("#logo").show();
 
     });
+
+//    var top = -80;
+//    setInterval(
+//            function () {
+//                if (top < 0) {
+//                    top += 1;
+//                    $("div.menu").css("top", top);
+//                }
+//            }
+//    , );
+
+
 });

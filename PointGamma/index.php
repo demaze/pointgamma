@@ -47,7 +47,5 @@ if ($authorized) {
 
 echo "</div>";
 
-echo "<img id='fond' src='images/fond_bleu_25.png' style='position: absolute; left: 0px; top: 0px; height: 100%; width: 100%; opacity: 0.8; display: block;z-index:-10'>";
-
 generateHTMLFooter();
 ?>

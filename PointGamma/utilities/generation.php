@@ -18,26 +18,29 @@ function generateHTMLHeader($title) {
         <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript" src="js/code.js"></script> 
     </head>
+    <img src='images/fond_bleu_25.png' style='
+        position: fixed;
+        left: 0px;
+        top: 0px;
+        height: 100%;
+        width: 100%;
+        display: block;
+        z-index:-10'>";
     <body>
 END;
 }
 
 function generateHTMLFooter() { //ATTENTION : MODEIFIé POUR LE JUMBOTRON
     echo "<br><br><br><br><br><br>";
+    echo "<div class='jumbotron footer'>";
     if (!isset($_SESSION['loggedIn']) || !$_SESSION['loggedIn']) {
-        echo <<<END
-    <div class="jumbotron footer">
-    <a href='signin.php' style="font-size:100%; text-align: left">Connexion pour élèves polytechniciens</a>
-    </div>
-END;
-    } else {
-        echo <<<END
-    <div class="jumbotron footer">
-    <a href='index.php?todo=logout' style="font-size:100%; text-align: left">Déconnexion</a>
-    </div>
-END;
+        echo "<a href='signin.php' style='font-size:100%; text-align: left'>Connexion pour élèves polytechniciens</a>";
+    }
+    else {
+        echo "<a href='index.php?todo=logout' style='font-size:100%; text-align: left'>Déconnexion</a>";
     }
     echo <<<END
+    </div>
     <script src="js/bootstrap.js"></script>
     </body>
     </html>
@@ -46,8 +49,10 @@ END;
 
 function generateNavbar($askedPage) {
     global $page_list;
+
     echo <<<END
-    <div class="menu">
+    <div class='menu'>
+    <img src="images/bandeau_bleu.png" style="height:80px;width:100%;position:fixed;left:0;z-index:-1">
     <div id="logo" class="menuItem" style="height:80px">
         <a href="index.php"><img alt="logo" src="images/logo.png" style="height:100%"/></a>
     </div>

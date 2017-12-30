@@ -1,32 +1,47 @@
-<?php
-require('utilities/utils.php');
-require('utilities/generation.php');
-generateHTMLHeader("bars");
-?>
-
-<div class="menu" style="text-align: center">
-    <div id="logo" class="menuItem" style="height:80px">
-        <a href="index.php"><img alt="logo" src="images/logo.png" style="height:100%"/></a>
-    </div>
-
-    <div id="lasoiree" class='menuItem'><a href="index.php?page=lasoiree">La Soiree</a></div>
-    <div id="lasoiree2" class='menuItem'><a href="index.php?page=lasoiree">La Soiree</a></div>
-    <div id="lasoiree3" class='menuItem'><a href="index.php?page=lasoiree">La Soiree</a></div>
-    <div id="lasoiree4" class='menuItem'><a href="index.php?page=lasoiree">La Soiree</a></div>
-
-    <button id="toggler" style="
-            position:absolute;
-            right:0;
-            top:0;
-            height:60px;
-            margin:10px;
-            font-size: 200%;
-            display:none;">
-        Menu
-    </button>
-</div> 
-
-
-<?php
-generateHTMLFooter();
-?>
+<html>
+   <head>
+   
+      <style>
+         
+         .animated {
+            background-image: url(images/logo.png);
+            background-repeat: no-repeat;
+            background-position: left top;
+            padding-top:95px;
+            margin-bottom:60px;
+            -webkit-animation-duration: 10s;
+            animation-duration: 10s;
+            -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+         }
+         
+         @-webkit-keyframes fadeIn {
+            0% {opacity: 0;}
+            100% {opacity: 1;}
+         }
+         
+         @keyframes fadeIn {
+            0% {opacity: 0;}
+            100% {opacity: 1;}
+         }
+         
+         .fadeIn {
+            -webkit-animation-name: fadeIn;
+            animation-name: fadeIn;
+         }
+      </style>
+      
+   </head>
+   <body>
+   
+      <div id="animated-example" class="animated fadeIn"></div>
+      <button onclick="myFunction()">Reload page</button>
+      
+      <script>
+         function myFunction() {
+            location.reload();
+         }
+      </script>
+      
+   </body>
+</html>

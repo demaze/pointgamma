@@ -9,27 +9,33 @@ div.menu {
     width:100%;
     min-height:80px;
     z-index: 10;
-    
-    background-color: #f5f5f5;
-    border: solid 1px;
-    border-color: #c8c8c8;
-    
+
+    background-color: white;
+
     text-align: center;
 }
 
 div.menuItem {
     display:inline-block;
     vertical-align:top;
-    color:gray;
     height:80px;
     line-height: 60px;
-    margin-right:10px;
     padding:10px;
-    padding-left: 30px;
-    padding-right: 30px;
+    padding-left: 35px;
+    padding-right: 35px;
     text-align: center;
     font-size: 200%;
 }
+
+a {
+    color:gray;
+    text-decoration:none;
+}
+a:hover {
+    color:black;
+    text-decoration:none;
+}
+
 
 div.menuItem:hover{
     color: black;
@@ -46,13 +52,13 @@ body {
 }
 
 div.footer{
-    background-color:black;
-    color:white;
+    background: none;
     position:absolute;
     bottom:0;
     left:0;
     right:0;
-    margin:0
+    margin:0;
+    height:80px;
 }
 
 div.rowbar{
@@ -85,39 +91,30 @@ div.descriptionbar{
 }
 
 
-a {
-    color:gray;
-    text-decoration:none;
-}
-a:hover {
-    color:black;
-    text-decoration:none;
-}
-
 /* CUSTOMIZE THE CAROUSEL
 -------------------------------------------------- */
 
 /* Carousel base class */
 .carousel {
-  margin-bottom: 4rem;
+    margin-bottom: 4rem;
 }
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {
-  z-index: 10;
-  bottom: 3rem;
+    z-index: 10;
+    bottom: 3rem;
 }
 
 /* Declare heights because of positioning of img element */
 .carousel-item {
-  height: 32rem;
-  background-color: #777;
+    height: 32rem;
+    background-color: #777;
 }
 .carousel-item > img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  min-width: 100%;
-  height: 32rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    height: 32rem;
 }
 
 
@@ -126,15 +123,15 @@ a:hover {
 
 /* Center align the text within the three columns below the carousel */
 .marketing .col-lg-4 {
-  margin-bottom: 1.5rem;
-  text-align: center;
+    margin-bottom: 1.5rem;
+    text-align: center;
 }
 .marketing h2 {
-  font-weight: normal;
+    font-weight: normal;
 }
 .marketing .col-lg-4 p {
-  margin-right: .75rem;
-  margin-left: .75rem;
+    margin-right: .75rem;
+    margin-left: .75rem;
 }
 
 
@@ -142,14 +139,14 @@ a:hover {
 ------------------------- */
 
 .featurette-divider {
-  margin: 5rem 0; /* Space out the Bootstrap <hr> more */
+    margin: 5rem 0; /* Space out the Bootstrap <hr> more */
 }
 
 /* Thin out the marketing headings */
 .featurette-heading {
-  font-weight: 300;
-  line-height: 1;
-  letter-spacing: -.05rem;
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -.05rem;
 }
 
 
@@ -157,20 +154,51 @@ a:hover {
 -------------------------------------------------- */
 
 @media (min-width: 40em) {
-  /* Bump up size of carousel content */
-  .carousel-caption p {
-    margin-bottom: 1.25rem;
-    font-size: 1.25rem;
-    line-height: 1.4;
-  }
+    /* Bump up size of carousel content */
+    .carousel-caption p {
+        margin-bottom: 1.25rem;
+        font-size: 1.25rem;
+        line-height: 1.4;
+    }
 
-  .featurette-heading {
-    font-size: 50px;
-  }
+    .featurette-heading {
+        font-size: 50px;
+    }
 }
 
 @media (min-width: 62em) {
-  .featurette-heading {
-    margin-top: 7rem;
-  }
+    .featurette-heading {
+        margin-top: 7rem;
+    }
+}
+
+
+
+
+
+.animated {
+    background-image: url(/images/logo.png);
+    background-repeat: no-repeat;
+    background-position: left top;
+    padding-top:95px;
+    margin-bottom:60px;
+    -webkit-animation-duration: 10s;
+    animation-duration: 10s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+@-webkit-keyframes fadeIn {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+@keyframes fadeIn {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+.fadeIn {
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
 }
