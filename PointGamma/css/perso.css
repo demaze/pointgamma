@@ -72,6 +72,19 @@ div.descriptionbar{
     transform: translateY(-50%);
 }
 
+.contentBars {
+    width: 1200px;
+    border: 4px;
+    padding: 20px;
+    overflow: hidden;
+}
+
+.contentBars img {
+    margin-right: 15px;
+    float: left;
+}
+
+
 a {
     color:gray;
     text-decoration:none;
