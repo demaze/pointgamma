@@ -1,12 +1,9 @@
-<?php
+<<?php
 
 function display() {
     global $dbh;
-
     initConnexion();
-
     initDeconnexion();
-
     if (isConnected()) {
         $login = $_SESSION['login'];
         $user = User::getUser($dbh, $login);
@@ -18,18 +15,17 @@ function display() {
     inscrireDansUnBar();
     $idCandidatureBar = idCandidatureBar();
 
+    $bar = null;
     if (isConnected()) {
         $bar = $user->getBar($dbh);
-        displayVotreBar($bar);
+        displayVotreBar($bar, $isPresident);
     }
 
-    displayBars($isPresident, $idCandidatureBar);
 
-    if ($isPresident) {
-        approveCandidate();
-        displayCandidates();
-    }
+    displayBars($isPresident, $idCandidatureBar, $bar);
 }
+
+//FONCTIONS UTILISEES DANS DISPLAY
 
 function initConnexion() {
     global $dbh;
@@ -89,33 +85,38 @@ function idCandidatureBar() {
     return $idCandidatureBar;
 }
 
-function displayBars($isPresident, $idCandidatureBar) {
+function displayBars($isPresident, $idCandidatureBar, $bar) {
     global $dbh;
+    echo "<script src='js/editinplace.js' type='text/javascript'></script>";
+
     //Affichage de la liste des bars
     $query = "SELECT * FROM Bars;";
     $sth = $dbh->prepare($query);
     $sth->execute();
     while ($courant = $sth->fetch(PDO::FETCH_ASSOC)) {
-        echo "<div class='row' style='position:relative'>";
-        echo "<div class='contentBars'>";
-        echo "<img src='" . $courant['image'] . " width='600' height='200' >";
-        echo "<h2>" . $courant['nom'] . "</h2>";
-        echo "<p>" . $courant['description'] . "</p>";
-        if (isConnected() && !$isPresident) {
-            if ($courant['id'] != $idCandidatureBar) {
-                echo "<a class='btn btn-info' href='index.php?page=bars&inscription_id=" . $courant['id'] . "' role='button' style='text-align: center'>S'inscrire</a>\n";
-            } else {
-                echo "<p><b>Candidature envoyée.</b></p>";
+        if ($bar == null || $courant['nom'] != $bar['nom']) {
+            echo "<div class='row' style='position:relative'>";
+            echo "<div class='contentBars'>";
+            echo "<img src='" . $courant['image'] . " width='600' height='200' >";
+            echo "<h2>" . $courant['nom'] . "</h2>";
+            echo "<p>" . $courant['description'] . "</p>";
+            if (isConnected() && !$isPresident) {
+                if ($courant['id'] != $idCandidatureBar) {
+                    echo "<a class='btn btn-info' href='index.php?page=bars&inscription_id=" . $courant['id'] . "' role='button' style='text-align: center'>S'inscrire</a>\n";
+                } else {
+                    echo "<p><b>Candidature envoyée.</b></p>";
+                }
             }
+            echo "</div>\n";
+            echo "</div>\n<br><br><br>\n";
         }
-        echo "</div>\n";
-        echo "</div>\n<br><br><br>\n";
     }
     $sth->closeCursor();
 }
 
 function displayCandidates() {
     global $dbh;
+    echo "<br>";
     echo "<h3>Candidats en attente de validation</h3>";
     $login = $_SESSION['login'];
     $user = User::getUser($dbh, $login);
@@ -147,20 +148,38 @@ function approveCandidate() {
     }
 }
 
-
-
-function displayVotreBar($bar) {
+function displayVotreBar($bar, $isPresident) {
     global $dbh;
-    echo "<h2 style='text-align:center'>Votre Bar : ".$bar['nom']."</h2>";
+    if ($isPresident) {
+        approveCandidate();
+    }
+    echo "<h2 style='text-align:center'>Votre Bar : " . $bar['nom'] . "</h2>";
+    echo "<div class='row' style='position:relative'>";
+    echo "<div class='contentBars'>";
+    echo "<img src='" . $bar['image'] . " width='600' height='200' >";
+    echo "<h2>" . $bar['nom'] . "</h2>";
+    //on gere la description (AJAX)
+    if (isset($_POST['contentDesc'])) {
+        $desc = $_POST['contentDesc'];
+    } else {
+        $desc = $bar['description'];
+    }
+    echo "<p id='desc'>" . $desc . "</p>";
+    echo "</div>\n";
+    echo "</div>";
     echo "<h3>Membres du bar :</h3>";
-    $query = "SELECT * FROM Users WHERE bar='".$bar['id']."';";
+    $query = "SELECT * FROM Users WHERE bar='" . $bar['id'] . "';";
     $sth = $dbh->prepare($query);
     $sth->execute();
     echo "<ul>";
-    while($courant=$sth->fetch()) {
-        echo "<li>".$courant['login']."</li>";
+    while ($courant = $sth->fetch()) {
+        echo "<li>" . $courant['login'] . "</li>";
     }
     echo "</ul>";
     $sth->closeCursor();
+    if ($isPresident) {
+        displayCandidates();
+    }
+    echo "<br><hr><br>";
     echo "<h3>Autres bars :</h3>";
 }
