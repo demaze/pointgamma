@@ -20,8 +20,26 @@ $page_list = array(
     array(
         "name" => "billeterie",
         "title" => "Billeterie",
-        "menutitle" => "Billeterie"));
+        "menutitle" => "Billeterie")
+);
 
+$artist_list = array(
+    array(
+        "id" => "panteros666",
+        "name" => "Panteros666",
+        "image" => "panteros666.jpg"
+    ),
+    array(
+        "id" => "salutcestcool",
+        "name" => "Salut c'est cool",
+        "image" => "salutcestcool.jpg"
+    ),
+    array(
+        "id" => "benklock",
+        "name" => "Ben Klock",
+        "image" => "benklock.jpg"
+    )
+);
 
 function isConnected() {
     return(array_key_exists('loggedIn', $_SESSION) && $_SESSION['loggedIn'] == true);
@@ -51,4 +69,5 @@ function getPageTitle($askedPage) {
     }
     return "erreur";
 }
+
 ?>

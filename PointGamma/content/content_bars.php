@@ -1,4 +1,4 @@
-<<?php
+<?php
 
 function display() {
     global $dbh;
@@ -18,7 +18,9 @@ function display() {
     $bar = null;
     if (isConnected()) {
         $bar = $user->getBar($dbh);
-        displayVotreBar($bar, $isPresident);
+        if ($bar != null) {
+            displayVotreBar($bar, $isPresident);
+        }
     }
 
 
@@ -158,13 +160,16 @@ function displayVotreBar($bar, $isPresident) {
     echo "<div class='contentBars'>";
     echo "<img src='" . $bar['image'] . " width='600' height='200' >";
     echo "<h2>" . $bar['nom'] . "</h2>";
+    
     //on gere la description (AJAX)
     if (isset($_POST['contentDesc'])) {
         $desc = $_POST['contentDesc'];
     } else {
         $desc = $bar['description'];
     }
+    
     echo "<p id='desc'>" . $desc . "</p>";
+    
     echo "</div>\n";
     echo "</div>";
     echo "<h3>Membres du bar :</h3>";
