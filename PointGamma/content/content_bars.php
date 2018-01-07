@@ -18,9 +18,7 @@ function display() {
     $bar = null;
     if (isConnected()) {
         $bar = $user->getBar($dbh);
-        if ($bar != null) {
-            displayVotreBar($bar, $isPresident);
-        }
+        displayVotreBar($bar, $isPresident);
     }
 
 
