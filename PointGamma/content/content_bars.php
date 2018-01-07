@@ -18,9 +18,7 @@ function display() {
     $bar = null;
     if (isConnected()) {
         $bar = $user->getBar($dbh);
-        if ($bar != null) {
-            displayVotreBar($bar, $isPresident);
-        }
+        displayVotreBar($bar, $isPresident);
     }
 
 
@@ -89,7 +87,7 @@ function idCandidatureBar() {
 
 function displayBars($isPresident, $idCandidatureBar, $bar) {
     global $dbh;
-    echo "<script src='js/editinplace.js' type='text/javascript'></script>";
+
 
     //Affichage de la liste des bars
     $query = "SELECT * FROM Bars;";
@@ -99,7 +97,7 @@ function displayBars($isPresident, $idCandidatureBar, $bar) {
         if ($bar == null || $courant['nom'] != $bar['nom']) {
             echo "<div class='row' style='position:relative'>";
             echo "<div class='contentBars'>";
-            echo "<img src='" . $courant['image'] . " width='600' height='200' >";
+            echo "<img src='" . $courant['image'] . "' width='400' height='200' >";
             echo "<h2>" . $courant['nom'] . "</h2>";
             echo "<p>" . $courant['description'] . "</p>";
             if (isConnected() && !$isPresident) {
@@ -128,9 +126,10 @@ function displayCandidates() {
     $sth = $dbh->prepare($query);
     $sth->execute();
     while ($courant = $sth->fetch()) {
-        $isThereCandidate = true;
-        echo $courant['login'];
-        echo "<a class='btn btn-info' href='index.php?page=bars&approved_login=" . $courant['login'] . "' role='button' style='text-align: center'>Approuver</a>";
+        $isThereCandidate = true;        
+        echo "<p><a class='btn btn-info' href='index.php?page=bars&approved_login=" . $courant['login'] . "' role='button' style='text-align: center'>Approuver</a>  ";
+        echo $courant['login']."</p>";
+        
     }
     if (!$isThereCandidate) {
         echo "<p><b>Pas de candidats pour l'instant</b></p>";
@@ -151,25 +150,29 @@ function approveCandidate() {
 }
 
 function displayVotreBar($bar, $isPresident) {
+    if($bar==null) {
+        return;
+    }
     global $dbh;
     if ($isPresident) {
         approveCandidate();
     }
-    echo "<h2 style='text-align:center'>Votre Bar : " . $bar['nom'] . "</h2>";
+    echo "<h2 style='text-align:center'><u>Votre Bar</u></h2>";
     echo "<div class='row' style='position:relative'>";
     echo "<div class='contentBars'>";
-    echo "<img src='" . $bar['image'] . " width='600' height='200' >";
+    echo "<img src='" . $bar['image'] . "' width='400' height='200' >";
     echo "<h2>" . $bar['nom'] . "</h2>";
-    
-    //on gere la description (AJAX)
-    if (isset($_POST['contentDesc'])) {
-        $desc = $_POST['contentDesc'];
+    if ($isPresident) {
+        echo "<script type='text/javascript' src='js/editinplace.js'></script>";
+        //triche pour avoir $bar dans le js
+        echo "<p id='barID' style='display:none'>".$bar['id']."</p>";
+
+        
+        echo "<p><textarea placeholder='Description du bar à compléter' id='desc' rows='4' cols='80' maxlength='500'>" . $bar['description'] . "</textarea></p>"
+        . "<input type='submit' id='submit' value='Enregistrer' />"."<p id='success'/>";
     } else {
-        $desc = $bar['description'];
+        echo "<p>".$bar['description']."</p>";
     }
-    
-    echo "<p id='desc'>" . $desc . "</p>";
-    
     echo "</div>\n";
     echo "</div>";
     echo "<h3>Membres du bar :</h3>";
@@ -186,5 +189,5 @@ function displayVotreBar($bar, $isPresident) {
         displayCandidates();
     }
     echo "<br><hr><br>";
-    echo "<h3>Autres bars :</h3>";
+    echo "<h2 style='text-align:center'><u>Autres bars</u></h2>";
 }
