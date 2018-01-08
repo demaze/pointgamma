@@ -3,14 +3,19 @@ class User {
     public $login;
     public $mdp;
     public $bar;
+    
+    
     public function setAttr($login, $mdp, $bar) {
         $this->login = $login;
         $this->mdp = $mdp;
         $this->bar = $bar;
     }
+    
     public function __toString() {
         return $this->login;
     }
+    
+    //retourne un objet User a partir d'un login
     public static function getUser($dbh, $login) {
         $query = "SELECT login, mdp, bar FROM Users WHERE login='$login';";
         $sth = $dbh->prepare($query);
@@ -23,12 +28,16 @@ class User {
         }
         return null;
     }
+    
+    //rajoute un nouvel utilisateur dans la base de donnée
     public static function insertUser($dbh, $user) {
         if (User::getUser($dbh, $user->login) == null) {
             $sth = $dbh->prepare("INSERT INTO Users (`login`, `mdp`, `bar`) VALUES(?,SHA1(?),?);");
             $sth->execute(array($user->login, $user->mdp, $user->bar));
         }
     }
+    
+    //verifie que le mod de passe est bon
     public static function isValidUser($dbh, $login, $mdp) {
         $mdpCrypte = SHA1($mdp);
         $user = User::getUser($dbh, $login);
@@ -37,6 +46,8 @@ class User {
         }
         return false;
     }
+    
+    //dit si l'utilisateur est Président
     public function isPresident($dbh) {
         $query = "SELECT * FROM Bars WHERE president=?";
         $sth = $dbh->prepare($query);
@@ -46,6 +57,8 @@ class User {
         }
         return false;
     }
+    
+
     private function getBarID($dbh) {
         $query = "SELECT * FROM Users WHERE login='$this->login';";
         $sth = $dbh->prepare($query);
@@ -57,6 +70,7 @@ class User {
         return null;
     }
     
+    //retourne le bar d'un utilisateur sous forme de tableau associatif
     public function getBar($dbh) {
         $barID = $this->getBarID($dbh);
         if($barID==null) {
