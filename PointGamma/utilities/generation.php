@@ -29,6 +29,7 @@ function generateHTMLFooter() { //ATTENTION : MODEIFIé POUR LE JUMBOTRON
     if (!isset($_SESSION['loggedIn']) || !$_SESSION['loggedIn']) {
         echo "<a href='signin.php' style='font-size:100%; text-align: left'>Connexion pour élèves polytechniciens</a>";
     } else {
+        echo "Connecté en tant que " . $_SESSION['login'] . "<br>";
         echo "<a href='index.php?todo=logout' style='font-size:100%; text-align: left'>Déconnexion</a>";
     }
     echo <<<END
@@ -56,7 +57,7 @@ function generateNavbar($askedPage) {
 END;
     foreach ($page_list as $page) {
         if ($page['name'] != 'home') {
-            echo "<div id='" . $page['name'] . "' class='menuItem'><a href='index.php?page=" . $page['name'] . "'";
+            echo "<div id='" . $page['name'] . "' class='menuItem'><a href='" . $page['adresse'] . "'";
             if ($askedPage == $page['name']) {
                 echo " style='color:black'";
             }
@@ -65,16 +66,7 @@ END;
     }
 
     echo <<<END
-    <button id="toggler" style="
-        position:absolute;
-        right:0;
-        top:0;
-        height:60px;
-        margin:10px;
-        font-size: 200%;
-        display:none;">
-        Menu
-    </button>
+<img id='toggler' src='images/toggler.png' class='toggler'>
 </div>
 END;
 }

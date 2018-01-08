@@ -6,7 +6,6 @@ require 'utilities/generation.php';
 require 'utilities/dataGestion.php';
 require 'classes/User.php';
 $dbh = Database::connect();
-
 //gestion de la connexion
 if (isset($_GET['todo']) && $_GET['todo'] == 'login' && isset($_POST['login']) && isset($_POST['mdp']) && User::isValidUser($dbh, $_POST['login'], $_POST['mdp'])) {
     $_SESSION['login'] = $_POST['login'];

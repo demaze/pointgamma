@@ -1,19 +1,28 @@
 $(document).ready(function () {
 
+    $("#descBarModifier").click(function () {
+        $("#divDescBar").hide();
+        $("#divDescBarMod").show();
+    });
 
-    $("#submit").click(function () {
-       
-        
+    $("#descBarEnregistrer").click(function () {
+
         $.post(
-                'http://localhost/Eazy-J-master/PointGamma/utilities/requestAJAXDesc.php', // Un script PHP que l'on va créer juste après
+                //ADRESSE A CHANGER
+                'http://localhost/PointGamma/utilities/requestAJAXDesc.php', // Un script PHP que l'on va créer juste après
 
                 {
-                    desc: $("#desc").val(), // Nous récupérons la valeur de nos inputs                
+                    desc: $("#descBarMod").val(), // Nous récupérons la valeur de nos inputs                
                     barID: $("#barID").html()
 
                 },
                 function (data) {
-                    $("#success").html(data);
+                    if(data=='Success'){
+                        $("#descBar").html($("#descBarMod").val());
+                    }
+                    $("#divDescBar").show();
+                    $("#divDescBarMod").hide();
+
                 },
                 "text" // Nous souhaitons recevoir "Success" ou "Failed", donc on indique text !
 

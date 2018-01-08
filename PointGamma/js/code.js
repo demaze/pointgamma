@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    console.log("frr");
+    
     /* On réduit le menu si l'écran est trop petit */
 
     var largeur;
