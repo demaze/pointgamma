@@ -9,9 +9,9 @@ if (isset($_POST['desc']) && isset($_POST['barID'])) {
     $sth = $dbh->prepare($query);
     $request_succeeded = $sth->execute(array($desc, $barID));
     if ($request_succeeded) {
-        echo "Enregistré";
+        echo "Success";
     } else {
-        echo "Erreur dans la mise à jour de la description";
+        echo "Error";
     }
 }
 

@@ -4,23 +4,33 @@ $page_list = array(
     array(
         "name" => "home",
         "title" => "Point Gamma 2017",
-        "menutitle" => ""),
+        "menutitle" => "",
+        "adresse" => "index.php"
+    ),
     array(
         "name" => "lasoiree",
         "title" => "La Soirée",
-        "menutitle" => "La Soirée"),
+        "menutitle" => "La Soirée",
+        "adresse" => "index.php?page=lasoiree"
+        ),
     array(
         "name" => "lineup",
         "title" => "La Line-Up",
-        "menutitle" => "Line-Up"),
+        "menutitle" => "Line-Up",
+        "adresse" => "index.php?page=lineup"
+    ),
     array(
         "name" => "bars",
         "title" => "Les Bars",
-        "menutitle" => "Les Bars"),
+        "menutitle" => "Les Bars",
+        "adresse" => "index.php?page=bars"
+    ),
     array(
         "name" => "billeterie",
         "title" => "Billeterie",
-        "menutitle" => "Billeterie")
+        "menutitle" => "Billeterie",
+        "adresse" => "http://www.billeterieexample.com"
+    )
 );
 
 $artist_list = array(

@@ -128,10 +128,9 @@ function displayCandidates() {
     $sth = $dbh->prepare($query);
     $sth->execute();
     while ($courant = $sth->fetch()) {
-        $isThereCandidate = true;        
+        $isThereCandidate = true;
         echo "<p><a class='btn btn-info' href='index.php?page=bars&approved_login=" . $courant['login'] . "' role='button' style='text-align: center'>Approuver</a>  ";
-        echo $courant['login']."</p>";
-        
+        echo $courant['login'] . "</p>";
     }
     if (!$isThereCandidate) {
         echo "<p><b>Pas de candidats pour l'instant</b></p>";
@@ -152,7 +151,7 @@ function approveCandidate() {
 }
 
 function displayVotreBar($bar, $isPresident) {
-    if($bar==null) {
+    if ($bar == null) {
         return;
     }
     global $dbh;
@@ -167,13 +166,20 @@ function displayVotreBar($bar, $isPresident) {
     if ($isPresident) {
         echo "<script type='text/javascript' src='js/editinplace.js'></script>";
         //triche pour avoir $bar dans le js
-        echo "<p id='barID' style='display:none'>".$bar['id']."</p>";
+        echo "<p id='barID' style='display:none'>" . $bar['id'] . "</p>";
 
-        
-        echo "<p><textarea placeholder='Description du bar à compléter' id='desc' rows='4' cols='80' maxlength='500'>" . $bar['description'] . "</textarea></p>"
-        . "<input type='submit' id='submit' value='Enregistrer' />"."<p id='success'/>";
+
+        echo
+        "<div id=divDescBar>" .
+        "<p id=descBar>" . $bar['description'] . "</p>" .
+        "<input type='submit' id='descBarModifier' value='Modifier' />" .
+        "</div>" .
+        "<div id=divDescBarMod style='display:none'>" .
+        "<p><textarea placeholder='Description du bar à compléter' id='descBarMod' rows='4' cols='80' maxlength='500'>" . $bar['description'] . "</textarea></p>" .
+        "<input type='submit' id='descBarEnregistrer' value='Enregistrer' />" .
+        "</div>";
     } else {
-        echo "<p>".$bar['description']."</p>";
+        echo "<p>" . $bar['description'] . "</p>";
     }
     echo "</div>\n";
     echo "</div>";
@@ -193,4 +199,3 @@ function displayVotreBar($bar, $isPresident) {
     echo "<br><hr><br>";
     echo "<h2 style='text-align:center'><u>Autres bars</u></h2>";
 }
-
