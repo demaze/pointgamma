@@ -23,8 +23,17 @@ function generateHTMLHeader($title) {
 END;
 }
 
-function generateHTMLFooter() { //ATTENTION : MODEIFIé POUR LE JUMBOTRON
-    echo "<br><br><br><br><br><br>";
+function generateHTMLFooter() {
+    echo <<<END
+    <script src="js/bootstrap.js"></script>
+    </body>
+    </html>
+END;
+}
+
+
+function generateHTMLFooterBar() {
+    echo "<br>";
     echo "<div class='jumbotron footer'>";
     if (!isset($_SESSION['loggedIn']) || !$_SESSION['loggedIn']) {
         echo "<a href='signin.php' style='font-size:100%; text-align: left'>Connexion pour élèves polytechniciens</a>";

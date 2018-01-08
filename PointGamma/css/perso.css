@@ -6,7 +6,7 @@ body {
     min-height: 100%;
     position:relative;
 
-    padding-top: 100px;
+    padding-top: 80px;
 
     background-image: url(../images/fond_bleu_25.png);
     background-attachment:fixed;
@@ -74,7 +74,7 @@ div.menuItem:hover{
     height:40px;
     margin:20px;
     display:none;
-    
+
     opacity:0.7;
 }
 
@@ -288,13 +288,21 @@ div.descriptionbar{
 */
 
 
+
 .carousel{
-    width:400px;
+    width:700px;
     height:350px;
-    margin:0 auto;
+    margin:auto;
 }
 
 .carousel-image{
-    width:400px;
+    width:700px;
     height:350px;
+    margin:auto;
+}
+
+div.artist_portrait{
+    display:inline-block;
+    margin-left: 60px;
+    margin-right: 60px;
 }

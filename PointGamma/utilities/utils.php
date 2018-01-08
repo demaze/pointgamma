@@ -36,18 +36,24 @@ $page_list = array(
 $artist_list = array(
     array(
         "id" => "panteros666",
-        "name" => "Panteros666",
-        "image" => "panteros666.jpg"
+        "nom" => "Panteros666",
+        "image" => "panteros666scene.jpg",
+        "portrait" =>"panteros666.jpg",
+        "lien" => "https://www.youtube.com/watch?v=ArlBfWwyFdk"
     ),
     array(
         "id" => "salutcestcool",
-        "name" => "Salut c'est cool",
-        "image" => "salutcestcool.jpg"
+        "nom" => "Salut c'est cool",
+        "image" => "salutcestcoolscene.png",
+        "portrait" =>"salutcestcool.jpg",
+        "lien" => "https://www.youtube.com/watch?v=x537Cqg5nEI"
     ),
     array(
         "id" => "benklock",
-        "name" => "Ben Klock",
-        "image" => "benklock.jpg"
+        "nom" => "Ben Klock",
+        "image" => "benklockscene.jpg",
+        "portrait" =>"benklock.jpg",
+        "lien" => "https://www.youtube.com/watch?v=5IrHzrg4qdQ"
     )
 );
 
