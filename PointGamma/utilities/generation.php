@@ -31,8 +31,8 @@ function generateHTMLFooter() {
 END;
 }
 
-
-function generateHTMLFooterBar() {
+//Pour la page bars, on fait apparaitre un lien pour se connecter ou se deconnecter.
+function generateHTMLFooterBars() {
     echo "<br>";
     echo "<div class='jumbotron footer'>";
     if (!isset($_SESSION['loggedIn']) || !$_SESSION['loggedIn']) {
@@ -52,7 +52,7 @@ END;
 function generateNavbar($askedPage) {
     global $page_list;
 
-
+//pour la page d'accueil, la navbar apparait progressivement (et on ne met donc pas l'image de fond car de toute facon la page ne se déroule pas)
     if ($askedPage == 'home') {
         echo "<div class='menu animated fadeInUp' style='background:none'>";
     } else {

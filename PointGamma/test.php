@@ -26,7 +26,7 @@ generateNavbar('lel');
             <img class='carousel-image' src='images/germanSuplex.jpg' alt='Second slide'>
             <div class='container'>
                 <div class='carousel-caption'>
-                    <h1>Valendieu goume Maddep</h1>
+                    <h1>Valendieu goume Maddaube</h1>
                 </div>
             </div>
         </div>
@@ -60,7 +60,7 @@ generateNavbar('lel');
     </div>
     <div class='artist_heading'>
         <img class='img-circle' src='images/germanSuplex.jpg' alt='Generic placeholder image' width='140' height='140'>
-        <h2>Valendieu goume Maddep</h2>
+        <h2>Valendieu goume Maddaube</h2>
         <p><a class='btn btn-default' href='#' role='button'>View details &raquo;</a></p>
     </div>
     <div class='artist_heading'>

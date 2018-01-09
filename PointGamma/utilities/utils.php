@@ -3,7 +3,7 @@
 $page_list = array(
     array(
         "name" => "home",
-        "title" => "Point Gamma 2017",
+        "title" => "Point Gamma 2018",
         "menutitle" => "",
         "adresse" => "index.php"
     ),
@@ -26,10 +26,10 @@ $page_list = array(
         "adresse" => "index.php?page=bars"
     ),
     array(
-        "name" => "billeterie",
-        "title" => "Billeterie",
-        "menutitle" => "Billeterie",
-        "adresse" => "http://www.billeterieexample.com"
+        "name" => "billetterie",
+        "title" => "Billetterie",
+        "menutitle" => "Billetterie",
+        "adresse" => "http://www.billetterieexample.com"
     )
 );
 

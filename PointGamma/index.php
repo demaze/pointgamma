@@ -47,7 +47,7 @@ if ($authorized) {
 echo "</div>";
 
 if ($askedPage == 'bars') {
-    generateHTMLFooterBar();
+    generateHTMLFooterBars();
 } else {
     generateHTMLFooter();
 }

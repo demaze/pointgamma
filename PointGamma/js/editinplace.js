@@ -1,30 +1,34 @@
+//script js gerant la modification de la description du bar, et utilisant AJAX
 $(document).ready(function () {
 
+    //passe de l'affichage de la description à sa modification dans une textbox
     $("#descBarModifier").click(function () {
-        $("#divDescBar").hide();
+        $("#divDescBar").hide(); 
         $("#divDescBarMod").show();
     });
 
+    //enregistre la nouvelle description et l'affiche 
     $("#descBarEnregistrer").click(function () {
 
-        $.post(
+        //envoi de la nouvelle description au serveur, qui effectue la requete SQL et renvoie 
+        $.post( 
                 //ADRESSE A CHANGER
-                'http://localhost/PointGamma/utilities/requestAJAXDesc.php', // Un script PHP que l'on va créer juste après
+                'http://localhost/Eazy-J-master/PointGamma/utilities/requestAJAXDesc.php', // Un script PHP que l'on va créer juste après
 
                 {
                     desc: $("#descBarMod").val(), // Nous récupérons la valeur de nos inputs                
                     barID: $("#barID").html()
 
                 },
-                function (data) {
-                    if(data=='Success'){
+                function (data) { //verifie que tout s'est bien passé (success), et le cas échéant change l'affichage
+                    if(data==='Success'){
                         $("#descBar").html($("#descBarMod").val());
                     }
                     $("#divDescBar").show();
                     $("#divDescBarMod").hide();
 
                 },
-                "text" // Nous souhaitons recevoir "Success" ou "Failed", donc on indique text !
+                "text" // Nous souhaitons recevoir "Success" ou "Failed", donc on indique text
 
                 );
     });
