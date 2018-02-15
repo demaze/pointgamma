@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    
+
     /* On réduit le menu si l'écran est trop petit */
 
     var largeur;
@@ -30,15 +30,28 @@ $(document).ready(function () {
 
     $("#toggler").click(function () {
         $("div.menuItem").toggle();
-        if($("div.menuItem").is(":visible")){
+        if ($("div.menuItem").is(":visible")) {
             $("div.menu").css("clip", "rect(0px,10000px,320px,0px)");
-        }
-        else{
+        } else {
             $("div.menu").css("clip", "rect(0px,10000px,80px,0px)");
         }
         $("#logo").show();
 
     });
+
+    $(".contentBar").hide();
+
+    $(".titleBar").click(function () {
+        if ($(this).next().is(":hidden")) {
+            $(".contentBar").hide();
+            $(this).next().show();
+        } else {
+            $(".contentBar").hide();
+        }
+
+    })
+
+
 
 
 });
