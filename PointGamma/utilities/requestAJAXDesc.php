@@ -3,7 +3,7 @@
 require_once 'dataGestion.php';
 $dbh = Database::connect();
 if (isset($_POST['desc']) && isset($_POST['barID'])) {
-    $desc = htmlspecialchars($_POST['desc']);
+    $desc = $_POST['desc'];
     $barID = $_POST['barID'];
     $query = "UPDATE Bars SET description=? WHERE id=?"; //change la base SQL avec la nouvelle description
     $sth = $dbh->prepare($query);

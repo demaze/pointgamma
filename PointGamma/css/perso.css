@@ -169,33 +169,30 @@ div.rowbar{
     position: relative;
 }
 
-div.titrebar{
+div.titleBar{
     text-align: center;
-    height:100%;
 }
 
-div.descriptionbar{
+div.contentBar {
+    position:relative;
+}
+
+.contentBar img {
+    width:400px;
+    height:200px;
+}
+
+div.descriptionBar{
     position:absolute;
+    left:400px;
     right:0;
     top:50%;
-    transform: translateY(-50%);
+    transform:translateY(-50%);
+    
+    padding-left:10px;
+    text-align:center;
+    font-size:200%;
 }
-
-.contentBars {
-    width: 1200px;
-    border: 4px;
-    padding: 20px;
-    overflow: hidden;
-}
-
-.contentBars img {
-    margin-right: 15px;
-    float: left;
-}
-
-
-
-
 
 
 

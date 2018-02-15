@@ -13,7 +13,7 @@ $(document).ready(function () {
         //envoi de la nouvelle description au serveur, qui effectue la requete SQL et renvoie 
         $.post( 
                 //ADRESSE A CHANGER
-                'http://localhost/Eazy-J-master/PointGamma/utilities/requestAJAXDesc.php', // Un script PHP que l'on va créer juste après
+                'utilities/requestAJAXDesc.php', // Un script PHP que l'on va créer juste après
 
                 {
                     desc: $("#descBarMod").val(), // Nous récupérons la valeur de nos inputs                

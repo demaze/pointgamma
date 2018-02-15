@@ -89,22 +89,27 @@ function displayBars($isPresident, $bar) {
     $sth->execute();
     while ($courant = $sth->fetch(PDO::FETCH_ASSOC)) {
         if ($bar == null || $courant['nom'] != $bar['nom']) {
-            echo "<div class='row' style='position:relative'>";
-            echo "<div class='contentBars'>";
-            echo "<img src='" . $courant['image'] . "' width='400' height='200' >";
-            echo "<h2>" . $courant['nom'] . "</h2>";
-            echo "<p>" . $courant['description'] . "</p>";
+            echo "<div class='row titleBar'>\n".
+                 "   <h1>".$courant['nom']."</h1>\n".
+                 "</div>\n".
+                 "<div class='row contentBar'>\n".
+                 "   <img src='".$courant['image']."'>\n".
+                 "   <div class='descriptionBar'>\n".
+                 "       <p>".htmlspecialchars($courant['description'])."</p>\n";
+            
             if (isConnected() && !$isPresident) {
                 if ($courant['id'] != $idCandidatureBar) {
                     echo "<a class='btn btn-info' href='index.php?page=bars&inscription_id=" . $courant['id'] . "' role='button' style='text-align: center'>S'inscrire";
                     if($bar!=null) {echo " et quitter votre bar";}
                     echo"</a>\n";
                 } else {
-                    echo "<p><b>Candidature envoyée.</b></p>";
+                    echo "<p><b>Candidature envoyée.</b></p>\n";
                 }
             }
-            echo "</div>\n";
-            echo "</div>\n<br><br><br>\n";
+           
+            echo "   </div>\n".
+                 "</div>";
+            
         }
     }
     $sth->closeCursor();
@@ -200,7 +205,7 @@ function displayVotreBar($bar, $isPresident) {
         echo "<p id='barID' style='display:none'>" . $bar['id'] . "</p>";
         echo
         "<div id=divDescBar>" .
-        "<p id=descBar>" . $bar['description'] . "</p>" .
+        "<p id=descBar>" . htmlspecialchars($bar['description']) . "</p>" .
         "<input type='submit' id='descBarModifier' value='Modifier' />" .
         "</div>" .
         "<div id=divDescBarMod style='display:none'>" .

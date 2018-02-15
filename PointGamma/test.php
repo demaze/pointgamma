@@ -5,74 +5,61 @@ generateHTMLHeader('lel');
 generateNavbar('lel');
 ?>
 
-
-
-<div id='myCarousel' class='carousel slide' data-ride='carousel'>
-    <ol class='carousel-indicators'>
-        <li data-target='#myCarousel' data-slide-to='0' class='active'></li>
-        <li data-target='#myCarousel' data-slide-to='1'></li>
-        <li data-target='#myCarousel' data-slide-to='2'></li>
-    </ol>
-    <div class='carousel-inner' role='listbox'>
-        <div class='item active'>
-            <img class='carousel-image' src='images/Deficio.jpg' alt='First slide'>
-            <div class='container'>
-                <div class='carousel-caption'>
-                    <h1>Deficio</h1>       
-                </div>
+<!--<div class='container'>
+        <div class='row titleBar'>
+            <h1>JSBAR</h1>
+        </div>
+        <div class='row contentBar'>
+            <img src='images/jeanSebastienBar.jpg'>
+            <div class='descriptionBar'>
+                <p>Venez au Jean-Sebastien Bar, bar le plus chic du Point Gamma !</p>
             </div>
         </div>
-        <div class='item'>
-            <img class='carousel-image' src='images/germanSuplex.jpg' alt='Second slide'>
-            <div class='container'>
-                <div class='carousel-caption'>
-                    <h1>Valendieu goume Maddaube</h1>
-                </div>
+
+        <div class='row titleBar'>
+            <h1>Le Madbar</h1>
+        </div>
+        <div class='row contentBar'>
+            <img src='images/madBar.jpg'>
+            <div class='descriptionBar'>
+                <p>Ils sont fous</p>
             </div>
         </div>
-        <div class='item'>
-            <img class='carousel-image' src='images/jeanSebastienBar.jpg' alt='Third slide'>
-            <div class='container'>
-                <div class='carousel-caption'>
-                    <h1>Les Clazicos</h1>
-                </div>
+
+        <div class='row titleBar'>
+            <h1>Bar Modal Web</h1>
+        </div>
+        <div class='row contentBar'>
+            <img src='images/modalWebBar.jpg'>
+            <div class='descriptionBar'>
+                <p>Très très AJAX</p>
             </div>
         </div>
-    </div>
-    <a class='left carousel-control' href='#myCarousel' role='button' data-slide='prev'>
-        <span class='glyphicon glyphicon-chevron-left' aria-hidden='true'></span>
-        <span class='sr-only'>Previous</span>
-    </a>
-    <a class='right carousel-control' href='#myCarousel' role='button' data-slide='next'>
-        <span class='glyphicon glyphicon-chevron-right' aria-hidden='true'></span>
-        <span class='sr-only'>Next</span>
-    </a>
-</div>
+</div>-->
 
-<br>
-<br>
 
-<div class='row' style='text-align: center'>
-    <div class='artist_heading'>
-        <img class='img-circle' src='images/Deficio.jpg' alt='Generic placeholder image' width='140' height='140'>
-        <h2>Déficio</h2>
-        <p><a class='btn btn-default' href='#' role='button'>View details &raquo;</a></p>
+
+
+<div class='' style='width:25%;left:5%;position:absolute;top:50%;transform:translateY(-50%);text-align:center'>
+    <div class='' style='border: solid 1px grey;margin:10px'>
+        <h2 style='color:grey'>JSBAR1</h2>
     </div>
-    <div class='artist_heading'>
-        <img class='img-circle' src='images/germanSuplex.jpg' alt='Generic placeholder image' width='140' height='140'>
-        <h2>Valendieu goume Maddaube</h2>
-        <p><a class='btn btn-default' href='#' role='button'>View details &raquo;</a></p>
+    <div class='' style='border: solid 1px black;margin:10px'>
+        <h2 style='color:black'>JSBAR2</h2>
     </div>
-    <div class='artist_heading'>
-        <img class='img-circle' src='images/jeanSebastienBar.jpg' alt='Generic placeholder image' width='140' height='140'>
-        <h2>Clazicos</h2>
-        <p><a class='btn btn-default' href='#' role='button'>View details &raquo;</a></p>
+    <div class='' style='border: solid 1px grey;margin:10px'>
+        <h2 style='color:grey'>JSBAR3</h2>
     </div>
 </div>
-
-
-
-
+<div class='' style='min-height:60%;width:60%;right:5%;position:absolute;top:50%;transform:translateY(-50%);text-align:center;border-left: solid 1px grey'>
+    <div class=''>
+        <h1>Le Jean-Sébastien Bar</h1>
+        <br>
+        <img src='images/jeanSebastienBar.jpg' style='height:200px;width:400px'>
+        <br><br><br>
+        <p>Un bar très bar, très bien, et tout et tout.</p>
+    </div>
+</div>
 
 <?php
 generateHTMLFooter()
