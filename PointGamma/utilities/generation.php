@@ -33,15 +33,9 @@ END;
 
 //Pour la page bars, on fait apparaitre un lien pour se connecter ou se deconnecter.
 function generateHTMLFooterBars() {
-    echo "<br>";
-    echo "<div class='jumbotron footer'>";
-    if (!isset($_SESSION['loggedIn']) || !$_SESSION['loggedIn']) {
-        echo "<a href='signin.php' style='font-size:100%; text-align: left'>Connexion pour élèves polytechniciens</a>";
-    } else {
-        echo "Connecté en tant que " . $_SESSION['login'] . "<br>";
-        echo "<a href='index.php?todo=logout' style='font-size:100%; text-align: left'>Déconnexion</a>";
-    }
     echo <<<END
+    <br>
+    <div class='jumbotron footer'>
     </div>
     <script src="js/bootstrap.js"></script>
     </body>

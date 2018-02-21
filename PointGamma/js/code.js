@@ -39,17 +39,19 @@ $(document).ready(function () {
 
     });
 
-    $(".contentBar").hide();
-
+    $(".descriptionBar").hide();
+    
+    
     $(".titleBar").click(function () {
-        if ($(this).next().is(":hidden")) {
-            $(".contentBar").hide();
-            $(this).next().show();
-        } else {
-            $(".contentBar").hide();
-        }
-
-    })
+        $(".descriptionBar").hide();
+        $(".titleBar").css("color","grey");
+        $(".titleBar").css("border-color","grey");
+        
+        $(this).css("color","black");
+        $(this).css("border-color","black");
+        idDesc = $(this).attr('id')+"desc";
+        $("[id='"+idDesc+"']").show();
+    });
 
 
 
