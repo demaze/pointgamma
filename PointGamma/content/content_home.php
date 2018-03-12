@@ -1,5 +1,2 @@
-<?php
-function display() {
-    echo "<img alt='logo' src='images/logo.png' class='center animated fadeIn'>";
-}
-?>
+<img alt='logo' src='images/logogauche.png' class='centerGauche animatedShort fadeInGauche'>
+<img alt='logo' src='images/logodroit.png' class='centerDroit animatedShort fadeInDroit'>

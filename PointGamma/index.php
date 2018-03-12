@@ -1,54 +1,22 @@
 <?php
 
-session_start();
 require 'utilities/utils.php';
 require 'utilities/generation.php';
-require 'utilities/dataGestion.php';
-require 'classes/User.php';
-$dbh = Database::connect();
-//gestion de la connexion
-if (isset($_GET['todo']) && $_GET['todo'] == 'login' && isset($_POST['login']) && isset($_POST['mdp']) && User::isValidUser($dbh, $_POST['login'], $_POST['mdp'])) {
-    $_SESSION['login'] = $_POST['login'];
-    $_SESSION['loggedIn'] = true;
-}
 
-//gestion de la deconnexion
-if (isset($_GET['todo']) && $_GET['todo'] == 'logout') {
-    logOut();
-}
 
-//selection des pages
-if (isset($_GET["page"])) {
-    $askedPage = $_GET["page"];
-} else {
-    $askedPage = "home";
-}
-$authorized = checkPage($askedPage);
-if ($authorized) {
-    $pageTitle = getPageTitle($askedPage);
-} else {
-    $pageTitle = "erreur";
-}
-generateHTMLHeader($pageTitle);
+generateHTMLHeader();
 
 //navBar
-generateNavbar($askedPage);
+generateNavbar();
 
 //affichage du contenu
-echo "<div class='container'>";
 
-if ($authorized) {
-    require("content/content_" . $askedPage . ".php");
-    display();
-} else {
-    echo "<p>Désolé, la page demandée n'existe pas</p>";
+
+foreach ($page_list as $page) {
+    echo "<div id='container" . $page['name'] . "' class='container pageContainer'>";
+    require 'content/content_' . $page['name'] . '.php';
+    echo "</div>";
 }
 
-echo "</div>";
-
-if ($askedPage == 'bars') {
-    generateHTMLFooterBars();
-} else {
-    generateHTMLFooter();
-}
+generateHTMLFooter();
 ?>

@@ -9,21 +9,25 @@ $(document).ready(function () {
                 largeur = (document.body.clientWidth);
                 if (largeur < 857 && large) {
                     large = false;
-                    $("div.menu").css("clip", "rect(0px,10000px,80px,0px)");
                     $("div.menuItem").css("display", "block");
                     $("div.menuItem").hide();
                     $("#logo").show();
                     $("#logo").css("position", "absolute");
                     $("#toggler").show();
+                    $(".centerDroit").css("height", "300px");
+                    $(".centerGauche").css("height", "300px");
+                    $(".containerVideo").css("width", "100%");
 
                 }
                 if (largeur >= 857 && !large) {
                     large = true;
-                    $("div.menu").css("clip", "rect(0px,10000px,80px,0px)");
                     $("div.menuItem").css("display", "inline-block");
                     $("div.menuItem").show();
                     $("#logo").css("position", "static");
                     $("#toggler").hide();
+                    $(".centerDroit").css("height", "500px");
+                    $(".centerGauche").css("height", "500px");
+                    $(".containerVideo").css("width", "65%");
                 }
             }
     , 150);
@@ -31,27 +35,47 @@ $(document).ready(function () {
     $("#toggler").click(function () {
         $("div.menuItem").toggle();
         if ($("div.menuItem").is(":visible")) {
-            $("div.menu").css("clip", "rect(0px,10000px,320px,0px)");
+            $(".pageContainer").hide();
         } else {
-            $("div.menu").css("clip", "rect(0px,10000px,80px,0px)");
+            $("#containerhome").show();
         }
         $("#logo").show();
 
     });
 
-    $(".descriptionBar").hide();
-    
-    
+
+    $(".pageContainer").hide();
+    $("#containerhome").show();
+
+
+    $(".menuItem").click(function () {
+        if (!large) {
+            $("div.menuItem").toggle();
+            $("#logo").show();
+        }
+        $(".pageContainer").hide();
+        $("#container" + $(this).attr('id')).show();
+        if ($(this).attr('id') === 'bars') {
+            $(".descriptionBar").hide();
+            $("#presentationBars").show();
+        }
+
+    });
+
+
+
     $(".titleBar").click(function () {
         $(".descriptionBar").hide();
-        $(".titleBar").css("color","grey");
-        $(".titleBar").css("border-color","grey");
-        
-        $(this).css("color","black");
-        $(this).css("border-color","black");
-        idDesc = $(this).attr('id')+"desc";
-        $("[id='"+idDesc+"']").show();
+        $(".titleBar").css("color", "#000099");
+        $(".titleBar").css("border-color", "#000099");
+
+        $(this).css("color", "black");
+        $(this).css("border-color", "black");
+        idDesc = $(this).attr('id') + "desc";
+        $("[id='" + idDesc + "']").show();
     });
+
+
 
 
 

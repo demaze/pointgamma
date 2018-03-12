@@ -1,6 +1,6 @@
 <?php
 
-function generateHTMLHeader($title) {
+function generateHTMLHeader() {
     echo <<<END
     <!DOCTYPE html>
     <head>
@@ -10,7 +10,7 @@ function generateHTMLHeader($title) {
     
     
         <link rel="icon" href="images/logo.png">
-        <title>$title</title>
+        <title>Point Gamma 2018</title>
         <!-- CSS Bootstrap -->
         <link href="css/bootstrap.css" rel="stylesheet">
         <!-- CSS Perso -->
@@ -31,47 +31,18 @@ function generateHTMLFooter() {
 END;
 }
 
-//Pour la page bars, on fait apparaitre un lien pour se connecter ou se deconnecter.
-function generateHTMLFooterBars() {
-    echo <<<END
-    <br>
-    <div class='jumbotron footer'>
-    </div>
-    <script src="js/bootstrap.js"></script>
-    </body>
-    </html>
-END;
-}
+function generateNavbar() {
 
-function generateNavbar($askedPage) {
-    global $page_list;
-
-//pour la page d'accueil, la navbar apparait progressivement (et on ne met donc pas l'image de fond car de toute facon la page ne se déroule pas)
-    if ($askedPage == 'home') {
-        echo "<div class='menu animated fadeInUp' style='background:none'>";
-    } else {
-        echo "<div class='menu'>";
-        echo "<img alt='fond' src='images/fond_bleu_25.png' class='bandeau'>";
-    }
-    echo <<<END
-    <div id="logo" class="menuItem" style="height:80px">
-        <a href="index.php"><img alt="logo" src="images/logo.png" style="height:100%"/></a>
-    </div>
-END;
-    foreach ($page_list as $page) {
-        if ($page['name'] != 'home') {
-            echo "<div id='" . $page['name'] . "' class='menuItem'><a href='" . $page['adresse'] . "'";
-            if ($askedPage == $page['name']) {
-                echo " style='color:black'";
-            }
-            echo ">" . $page['menutitle'] . "</a></div>\n";
-        }
-    }
-
-    echo <<<END
-<img id='toggler' src='images/toggler.png' class='toggler'>
-</div>
-END;
+    echo "<div class='menu animated fadeInUp'>" .
+    "<div id='logo' class='menuItem' style='height:80px'>" .
+    "<a href='index.php'><img alt='logo' src='images/logo2018.png' style='height:100%'/></a>" .
+    "</div>" .
+    "<div id='lasoiree' class='menuItem'>La Soirée</div>\n" .
+    "<div id='lineup' class='menuItem'>Line-Up</div>\n" .
+    "<div id='bars' class='menuItem'>Les Bars</div>\n" .
+    "<div id='billeterie' class='menuItem'><a href='https://www.digitick.com/index-css5-pointgamma-pg1.html'>Billeterie</a></div>\n" .
+    "<img id='toggler' src='images/toggler.png' class='toggler'>" .
+    "</div>";
 }
 
 ?>

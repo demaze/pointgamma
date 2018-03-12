@@ -8,14 +8,26 @@ body {
 
     padding-top: 80px;
 
-    background-image: url(../images/fond_bleu_25.png);
+    background-image: url(../images/fond_tache_colore.jpg);
     background-attachment:fixed;
     background-size:100% 100%;
+    
+    font-family: "Anton";
+    font-weight:bold;
+    color:#003366;
+    
 }
 
 .test{
     border:solid 1px black;
 }
+
+p.pedro {
+    font-family: "Anton";
+}
+
+
+
 
 
 /*MENU*/
@@ -27,8 +39,8 @@ div.menu {
     min-height:80px;
     z-index: 10;
 
-    background-color: white;
-    clip:rect(0px,10000px,80px,0px);
+/*    background-color: rgba(0, 0, 0, 0.8);*/
+    background: none;
 
     text-align: center;
 }
@@ -52,10 +64,11 @@ div.menuItem {
     padding-right: 35px;
     text-align: center;
     font-size: 200%;
+    cursor:pointer;
 }
 
 a {
-    color:gray;
+    color:#003366;
     text-decoration:none;
 }
 a:hover {
@@ -85,6 +98,9 @@ div.menuItem:hover{
 
 
 
+
+
+
 /*FOOTER*/
 div.footer{
     position:absolute;
@@ -101,19 +117,40 @@ div.footer{
 
 
 
+
+
+
+
+
 /*PAGE HOME*/
-.center{
-    height:300px;
+.centerDroit{
+    height:500px;
     position:fixed;
     top:50%;
     left:50%;
-    transform: translate(-50%,-50%);
+    transform: translateY(-50%);
+
+}
+
+.centerGauche{
+    height:500px;
+    position:fixed;
+    top:50%;
+    right:50%;
+    transform: translateY(-50%);
 
 }
 
 .animated {
-    -webkit-animation-duration: 5s;
-    animation-duration: 5s;
+    -webkit-animation-duration: 4s;
+    animation-duration: 4s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+.animatedShort {
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
     -webkit-animation-fill-mode: both;
     animation-fill-mode: both;
 }
@@ -145,20 +182,86 @@ div.footer{
     animation-name: fadeInUp;
 }
 
-@keyframes fadeIn {
-    0% {opacity: 0;}
-    100% {opacity: 1;}
+@keyframes fadeInGauche {
+    0% {
+        opacity: 0;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(-50%);
+    }
 }
 
-@-webkit-keyframes fadeIn {
-    0% {opacity: 0;}
-    100% {opacity: 1;}
+@-webkit-keyframes fadeInGauche {
+    0% {
+        opacity: 0;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(-50%);
+    }
 }
 
-.fadeIn {
-    -webkit-animation-name: fadeIn;
-    animation-name: fadeIn;
+.fadeInGauche {
+    -webkit-animation-name: fadeInGauche;
+    animation-name: fadeInGauche;
 }
+
+@keyframes fadeInDroit {
+    0% {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(-50%);
+    }
+}
+
+@-webkit-keyframes fadeInDroit {
+    0% {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(-50%);
+    }
+}
+
+.fadeInDroit {
+    -webkit-animation-name: fadeInDroit;
+    animation-name: fadeInDroit;
+}
+
+
+
+
+
+/*PAGE LA SOIREE*/
+
+.containerActivites {
+    display:inline-block;
+    height:100%;
+    
+    margin-right:20px;
+    margin-bottom:20px;
+    padding:10px;
+    
+    text-align: left;
+    vertical-align: top;
+    
+    border: solid 1px #003366;
+}
+
+.containerVideo {
+    display:inline-block;
+    width:65%;
+}
+
+
 
 
 
@@ -174,9 +277,10 @@ div.footer{
 }
 
 .titleBar{
-    border: solid 1px grey;
+    border: solid 1px #003366;
     margin:10px;
-    color:grey;
+    color:#003366;
+    cursor:pointer;
 }
 
 .containerDescriptionBars{
@@ -187,11 +291,11 @@ div.footer{
     top:50%;
     transform:translateY(-50%);
     text-align:center;
-    border-left: solid 1px grey;
+    border-left: solid 1px #003366;
 }
 
 .descriptionBar{
-    
+    font-size: 150%;
 }
 
 
