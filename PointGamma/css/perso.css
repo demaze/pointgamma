@@ -2,28 +2,35 @@ html {
     height: 100%;
 }
 
+
+@font-face {
+    font-family: "antonio-bold";
+    src: url("../fonts/Antonio-Bold.ttf");
+}
+
+@font-face {
+    font-family: "Roboto-Light";
+    src: url("../fonts/Roboto-Light.ttf");
+}
+
+
 body {
     min-height: 100%;
     position:relative;
 
     padding-top: 80px;
 
-    background-image: url(../images/fond_tache_colore.jpg);
+    background-image: url(../images/fond_barres.jpg);
     background-attachment:fixed;
     background-size:100% 100%;
-    
-    font-family: "Anton";
-    font-weight:bold;
-    color:#003366;
-    
+
+    font-family: "Roboto-Light";
+/*    color:#003366;*/
+
 }
 
 .test{
     border:solid 1px black;
-}
-
-p.pedro {
-    font-family: "Anton";
 }
 
 
@@ -39,10 +46,11 @@ div.menu {
     min-height:80px;
     z-index: 10;
 
-/*    background-color: rgba(0, 0, 0, 0.8);*/
+    /*    background-color: rgba(0, 0, 0, 0.8);*/
     background: none;
 
     text-align: center;
+    font-size: 200%;
 }
 
 img.bandeau {
@@ -59,10 +67,10 @@ div.menuItem {
     vertical-align:top;
     height:80px;
     line-height: 60px;
-    padding:10px;
+/*    padding:10px;
     padding-left: 35px;
     padding-right: 35px;
-    text-align: center;
+    text-align: center;*/
     font-size: 200%;
     cursor:pointer;
 }
@@ -96,6 +104,13 @@ div.menuItem:hover{
 }
 
 
+.imgInActif {
+    width:250px;
+}
+
+.imgActif {
+    width:250px;
+}
 
 
 
@@ -126,20 +141,59 @@ div.footer{
 .centerDroit{
     height:500px;
     position:fixed;
-    top:50%;
+    bottom:25%;
     left:50%;
-    transform: translateY(-50%);
 
 }
 
 .centerGauche{
     height:500px;
     position:fixed;
-    top:50%;
+    bottom:25%;
     right:50%;
-    transform: translateY(-50%);
 
 }
+
+.divBarreDroite {
+    position:fixed;
+    bottom:25%;
+    left:50%;
+    z-index:-1
+}
+
+.barreDroite {
+    position:absolute;
+    top:-630px;
+    left:190px;
+}
+
+.divBarreGauche {
+    position:fixed;
+    bottom:25%;
+    right:50%;
+    z-index:-1
+}
+
+.barreGauche {
+    position:absolute;
+    top:-670px;
+    right:110px;
+}
+
+.barreGauchePetite {
+    position:absolute;
+    top:-680px;
+    right:90px;
+}
+
+.logoTitre{
+    position:fixed;
+    left:50%;
+    transform: translateX(-50%);
+    height:300px;
+    bottom:30px;
+}
+
 
 .animated {
     -webkit-animation-duration: 4s;
@@ -185,22 +239,22 @@ div.footer{
 @keyframes fadeInGauche {
     0% {
         opacity: 0;
-        transform: translateY(0);
+        transform: translateY(50%);
     }
     100% {
         opacity: 1;
-        transform: translateY(-50%);
+        transform: translateY(0);
     }
 }
 
 @-webkit-keyframes fadeInGauche {
     0% {
         opacity: 0;
-        transform: translateY(0);
+        transform: translateY(50%);
     }
     100% {
         opacity: 1;
-        transform: translateY(-50%);
+        transform: translateY(0);
     }
 }
 
@@ -212,28 +266,88 @@ div.footer{
 @keyframes fadeInDroit {
     0% {
         opacity: 0;
-        transform: translateY(-100%);
+        transform: translateY(-50%);
     }
     100% {
         opacity: 1;
-        transform: translateY(-50%);
+        transform: translateY(0);
     }
 }
 
 @-webkit-keyframes fadeInDroit {
     0% {
         opacity: 0;
-        transform: translateY(-100%);
+        transform: translateY(-50%);
     }
     100% {
         opacity: 1;
-        transform: translateY(-50%);
+        transform: translateY(0);
     }
 }
 
 .fadeInDroit {
     -webkit-animation-name: fadeInDroit;
     animation-name: fadeInDroit;
+}
+
+
+@keyframes barres {
+    0% {
+        clip: rect(500px,300px,500px,0px)
+    }
+    50% {
+        clip: rect(500px,300px,500px,0px)
+    }
+    100% {
+        clip: rect(0px,300px,500px,0px)
+    }
+}
+
+@-webkit-keyframes barres {
+    0% {
+        clip: rect(500px,300px,500px,0px)
+    }
+    50% {
+        clip: rect(500px,300px,500px,0px)
+    }
+    100% {
+        clip: rect(0px,300px,500px,0px)
+    }
+}
+
+.barres {
+    -webkit-animation-name: barres;
+    animation-name: barres;
+}
+
+
+@-webkit-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    60% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    60% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.fadeIn {
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
 }
 
 
@@ -245,20 +359,20 @@ div.footer{
 .containerActivites {
     display:inline-block;
     height:100%;
-    
+
     margin-right:20px;
     margin-bottom:20px;
     padding:10px;
-    
+
     text-align: left;
     vertical-align: top;
-    
+
     border: solid 1px #003366;
 }
 
 .containerVideo {
     display:inline-block;
-    width:65%;
+    width:60%;
 }
 
 

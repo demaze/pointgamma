@@ -34,13 +34,26 @@ END;
 function generateNavbar() {
 
     echo "<div class='menu animated fadeInUp'>" .
-    "<div id='logo' class='menuItem' style='height:80px'>" .
-    "<a href='index.php'><img alt='logo' src='images/logo2018.png' style='height:100%'/></a>" .
+    "<div id='logo' class='menuItem' style='height:100px;padding-top:0;padding-bottom:0;margin-right:50px'>" .
+    "<a href='index.php'><img alt='logo' src='images/logo2018clean.png' style='height:100%'/></a>" .
     "</div>" .
-    "<div id='lasoiree' class='menuItem'>La Soirée</div>\n" .
-    "<div id='lineup' class='menuItem'>Line-Up</div>\n" .
-    "<div id='bars' class='menuItem'>Les Bars</div>\n" .
-    "<div id='billeterie' class='menuItem'><a href='https://www.digitick.com/index-css5-pointgamma-pg1.html'>Billeterie</a></div>\n" .
+    "<div id='lasoiree' class='menuItem'>"
+            . "<img id='lasoireeinactif' class='imgInActif' src='images/Soirée.png'>"
+            . "<img id='lasoireeactif' class='imgActif' src='images/SoiréeActif.png'>"
+            . "</div>\n" .
+    "<div id='lineup' class='menuItem'>"
+            . "<img id='lineupinactif' class='imgInActif' src='images/LU.png'>"
+            . "<img id='lineupactif' class='imgActif' src='images/LUActif.png'>"
+            . "</div>\n" .
+    "<div id='bars' class='menuItem'>"
+            . "<img id='barsinactif' class='imgInActif' src='images/Bars.png'>"
+            . "<img id='barsactif' class='imgActif' src='images/BarsActif.png'>"
+            . "</div>\n" .
+    "<div id='billetterie' class='menuItem'>"
+            . "<a href='https://www.digitick.com/index-css5-pointgamma-pg1.html'>"
+            . "<img id='billetterieinactif' class='imgInActif' src='images/Billetterie.png'>"
+            . "</a>"
+            . "</div>\n" .
     "<img id='toggler' src='images/toggler.png' class='toggler'>" .
     "</div>";
 }
